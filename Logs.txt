@@ -1,0 +1,45 @@
+14:56:01 [INFO] Starting ConnectWise PA CustomGPT Triage Process
+14:56:01 [INFO] Using conditions: status/name="New" and board/name="Service" and owner/name=null and contact/name="Thegen Jackson"
+14:56:01 [INFO] Requesting URL: https://api-aus.myconnectwise.net/v4_6_release/apis/3.0/service/tickets?conditions=status/name%3D%22New%22%20and%20board/name%3D%22Service%22%20and%20owner/name%3Dnull%20and%20contact/name%3D%22Thegen%20Jackson%22
+14:56:01 [INFO] Response Status Code: 200
+14:56:01 [INFO] Fetched 1 ticket(s) from 'Service' board created since 2025-04-10T04:51:01Z
+14:56:01 [INFO] Ticket data structure: {'Ticket ID': 346467, 'Summary': 'TEST TICKET', 'Description': 'THIS IS A TEST TICKET\nDO NOT ACTION\nTESTING CONNECTWISE PSA -> CUSTOMGPT INTEGRATION USING PYTHON\n\n**Thegen\xa0Jackson**\n**Service\xa0Engineer**\n![\\[image\\]](https://aus.myconnectwise.net/v4_6_release/api/inlineimages/bsc/e5ba2605-1b15-4d28-b636-bed25ca797cf)\n\n[thegen.jackson@envisageit.com.au](mailto:thegen.jackson@envisageit.com.au)\n![\\[image\\]](https://aus.myconnectwise.net/v4_6_release/api/inlineimages/bsc/71e336d1-141e-46b6-ad31-32a5abc3600c)\n\n[+61\xa07\xa03193\xa09976\xa0](tel:+61%207%203193%209976)\n![\\[image\\]](https://aus.myconnectwise.net/v4_6_release/api/inlineimages/bsc/d8d38fd3-139a-4d97-a3d4-f7b5b1fab9a2)\n\n[www.envisageit.com.au](https://au.content.exclaimer.net/?url=https%3A%2F%2Fwww.envisageit.com.au%2F&amp;tenantid=WOek4SnhEe-GxQAiSJJmVA&amp;templateid=37fb36a1004bef11991a002248926654&amp;excomponentid=WNqvuwI51ycpkSNw1ZvkDqGfZXtsFgHEljn0gTNE3EU&amp;excomponenttype=Link&amp;signature=W7WeIiveN67E_Htk94M-kHkEwosVIgDzYHo0BYBdID00ycqKvfR26utBlRLi3zZlIVgELdBL1UhzFOCGr25ZcJvi6mQxGLzk9Ej7ANevPGlTJWSPxRoPB58kAc7BUKFJ0F56syQieCNKSegxu0pJ6yZmBnVCmuQ93VVaM-Ppr7FURC5dfBlj7dm1_X1GcmA9dUT_tsdBj-EO_ArXTbyEHecyrlwiVSojuwoNYldOkCW99LtSntA3XHEm0cpxkhxj5EHgsyQ0dBjuwCDlH1ky6D-xT2ww_INLgUIlQEC-5EaXBI-RJ6INDGHGggsM104OIbatIohb-pcGPcX36M3Log&amp;v=1&amp;imprintMessageId=dadf6355-4478-46f1-a670-b21ef72b95b5&amp;imprintMessageId=1814cf29-91a0-47af-b658-bb1a224f612b&amp;imprintMessageId=469e8f48-4664-4a13-8532-7ee1fd27bf5a&amp;imprintMessageId=e2bd2ff5-b231-4969-82ab-7dcf411b1b1f&amp;imprintMessageId=f30db666-eca8-4418-b168-0389f7c22435)\n**MANAGED\xa0SERVICES\xa0|\xa0CLOUD\xa0INTEGRATION\xa0|\xa0CONSULTING**\n![\\[image\\]](https://aus.myconnectwise.net/v4_6_release/api/inlineimages/bsc/71cd81b4-12e4-4282-98de-13a7604fb561)\n\n[![\\[LinkedIn\\]](https://aus.myconnectwise.net/v4_6_release/api/inlineimages/bsc/7351a159-a7fa-49f2-8db4-e895f04a026a)](https://au.content.exclaimer.net/?url=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fenvisage-technology&amp;tenantid=WOek4SnhEe-GxQAiSJJmVA&amp;templateid=37fb36a1004bef11991a002248926654&amp;excomponenttype=SocialMediaIcon&amp;signature=XJ5HiAsBLYM0LOLRR342O31Bd3rEVaV8jJNt2LGhddnfwQay9nbHCcM1t2ClufGkiQu8yLGIpGoi1eB9RmicmzTNtKIf7KKgReXrLC9oDl3hsqEysqDxYCfvTVr_KWJnSi_Lq9dclt-aRNCtsawoiiALeRFSJcicviqudcGf9PerdItPE8k5_8Aqe6L9CoarJHJWVkEMaMKzH8WzGVey0qSMGLe_1k06c3vZwgqHxs_O6revex1VDCI3TzgqjP5GymAZd36O0ENH-T4w3WFkwyEvkxt0x_MS1LB4om30AR4wQroICgCX70Bm9lmiLCrQ5Zo1iyZkaEu4oG_8e4gOEQ&amp;v=1&amp;imprintMessageId=dadf6355-4478-46f1-a670-b21ef72b95b5&amp;imprintMessageId=1814cf29-91a0-47af-b658-bb1a224f612b&amp;imprintMessageId=469e8f48-4664-4a13-8532-7ee1fd27bf5a&amp;imprintMessageId=e2bd2ff5-b231-4969-82ab-7dcf411b1b1f&amp;imprintMessageId=f30db666-eca8-4418-b168-0389f7c22435)\n**Disclaimer:**\xa0\n\nThis\xa0email\xa0and\xa0any\xa0attachments\xa0are\xa0confidential\xa0and\xa0may\xa0be\xa0subject\xa0to\xa0copyright,\xa0legal\xa0or\xa0some\xa0other\xa0professional\xa0privilege.\xa0They\xa0are\xa0intended\xa0solely\xa0for\xa0the\xa0attention\xa0and\xa0use\xa0of\xa0the\xa0named\xa0addressee\\(s\\).\xa0They\xa0may\xa0only\xa0be\xa0copied,\xa0distributed\xa0or\xa0disclosed\xa0with\xa0the\xa0consent\xa0of\xa0the\xa0copyright\xa0owner.\n\nIf\xa0you\xa0have\xa0received\xa0this\xa0email\xa0by\xa0mistake\xa0or\xa0by\xa0breach\xa0of\xa0the\xa0confidentiality\xa0clause,\xa0please\xa0notify\xa0the\xa0sender\xa0immediately\xa0by\xa0return\xa0email\xa0and\xa0delete\xa0or\xa0destroy\xa0all\xa0copies\xa0of\xa0the\xa0email.\xa0Any\xa0confidentiality\xa0privilege\xa0or\xa0copyright\xa0is\xa0not\xa0waived\xa0or\xa0lost\xa0because\xa0this\xa0email\xa0has\xa0been\xa0sent\xa0to\xa0you\xa0by\xa0mistake.'}
+14:56:01 [INFO] Ticket ID: Unknown ID, Summary: No summary available
+14:56:02 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+14:56:02 [INFO] Retrying request to /chat/completions in 0.468166 seconds
+14:56:03 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+14:56:03 [INFO] Retrying request to /chat/completions in 0.961421 seconds
+14:56:04 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+14:56:04 [ERROR] Failed to generate GPT triage for ticket: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+Traceback (most recent call last):
+  File "C:\Users\ThegenJackson\OneDrive - Envisage Technology\Desktop\GitHub\GPTTriageBot\connectwise-gpt-triage-script.py", line 187, in getTriageOutput
+    response = client.chat.completions.create(model="gpt-3.5-turbo",  # Replace with the appropriate model
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_utils\_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\resources\chat\completions\completions.py", line 914, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 919, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 1008, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 1057, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 1008, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 1057, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\ThegenJackson\AppData\Roaming\Python\Python312\site-packages\openai\_base_client.py", line 1023, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+

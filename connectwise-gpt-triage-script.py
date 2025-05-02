@@ -17,9 +17,14 @@ logging.basicConfig(
     filemode='a',
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
-    datefmt='%H:%M:%S'  # This formats the timestamp as HH:MM:SS
+    datefmt='%H:%M:%S'
 )
 
+# Open AI Key and Model
+client = OpenAI(api_key=f"{os.getenv("OPENAI_API_KEY")}")
+GPT_MODEL = os.getenv("GPT_MODEL")
+
+# ConnectWise PSA Keys and Authentication
 company_id = os.getenv("CW_COMPANY_ID")
 public_key = os.getenv("CW_PUBLIC_KEY")
 private_key = os.getenv("CW_PRIVATE_KEY")
@@ -27,12 +32,15 @@ key_string = f"{company_id}+{public_key}:{private_key}"
 encoded_key = base64.b64encode(key_string.encode()).decode()
 CW_AUTHORIZATION_TOKEN = encoded_key
 
-# Load credentials from .env
-client = OpenAI(api_key=f"{os.getenv("OPENAI_API_KEY")}")
+# ConnectWise PSA Connection
 CW_CLIENT_ID = os.getenv("CW_CLIENT_ID")
 CW_SITE = os.getenv("CW_SITE")
-CW_BOARD = "Service"
-TIME_WINDOW_MINUTES = 5 
+
+# ConnectWise PSA Integration Details
+CW_BOARD = os.getenv("CW_BOARD")
+CW_STATUS = os.getenv("CW_STATUS")
+TIME_WINDOW = os.getenv("TIME_WINDOW")
+LOCAL_TIMEZONE = os.getenv("LOCAL_UTC_OFFEST")
 
 # Define headers with clientId for authentication
 HEADERS = {
@@ -45,19 +53,19 @@ HEADERS = {
 
 def fetchNewTickets():
     try:
-        # Brisbane is UTC+10
-        brisbane_offset = timezone(timedelta(hours=10))
+        # Offest UTC based on local timezone
+        local_timezone_offset = timezone(timedelta(hours=LOCAL_TIMEZONE))
 
-        # Now in Brisbane local time
-        now_brisbane = datetime.now(brisbane_offset)
-        time_cutoff_dt = now_brisbane - timedelta(minutes=TIME_WINDOW_MINUTES)
+        # Now in local time
+        local_timezone_now = datetime.now(local_timezone_offset)
+        time_cutoff_dt = local_timezone_now - timedelta(minutes=TIME_WINDOW)
 
         # Convert to UTC for ConnectWise API
         time_cutoff_utc = time_cutoff_dt.astimezone(timezone.utc)
         time_cutoff_str = time_cutoff_utc.strftime('%Y-%m-%dT%H:%M:%SZ')
 
         # Prepare the conditions string WITH brackets around the date
-        conditions = f'status/name="New" and board/name="Service" and owner/name=null and contact/name="Thegen Jackson"'
+        conditions = f'status/name={CW_STATUS} and board/name={CW_BOARD} and owner/name=null and contact/name="Thegen Jackson"'
 
         logging.info(f"Using conditions: {conditions}")  # Log the conditions for debugging
 
@@ -121,7 +129,6 @@ def fetchNewTickets():
 
     except requests.exceptions.RequestException as e:
         logging.error(f"Failed to fetch tickets due to request error: {e}")
-        # Log the traceback for detailed debugging
         logging.error(traceback.format_exc())
         return []
     except Exception as e:
@@ -184,7 +191,7 @@ Notes:
 Triage Analysis:
 """
 
-        response = client.chat.completions.create(model="gpt-3.5-turbo",  # Replace with the appropriate model
+        response = client.chat.completions.create(model=GPT_MODEL,
         messages=[{"role": "system", "content": system_prompt},
                   {"role": "user", "content": user_prompt}])
 

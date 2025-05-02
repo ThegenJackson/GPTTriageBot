@@ -20,9 +20,10 @@ logging.basicConfig(
     datefmt='%H:%M:%S'
 )
 
-# Open AI Key and Model
+# Open AI Key, Model and Prompt
 client = OpenAI(api_key=f"{os.getenv("OPENAI_API_KEY")}")
 GPT_MODEL = os.getenv("GPT_MODEL")
+SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT")
 
 # ConnectWise PSA Keys and Authentication
 company_id = os.getenv("CW_COMPANY_ID")
@@ -65,22 +66,17 @@ def fetchNewTickets():
         time_cutoff_str = time_cutoff_utc.strftime('%Y-%m-%dT%H:%M:%SZ')
 
         # Prepare the conditions string WITH brackets around the date
-        conditions = f'status/name={CW_STATUS} and board/name={CW_BOARD} and owner/name=null and contact/name="Thegen Jackson"'
-
-        logging.info(f"Using conditions: {conditions}")  # Log the conditions for debugging
+        conditions = f'status/name={CW_STATUS} and board/name={CW_BOARD} and owner/name=null and FIX DATE' #FIX DATE
 
         # URL encode the conditions string
         encoded_conditions = quote(conditions)
 
         # Build the URL with the encoded conditions
         url = f"{CW_SITE}/v4_6_release/apis/3.0/service/tickets?conditions={encoded_conditions}"
-        logging.info(f"Requesting URL: {url}")  # Log the final URL
 
         # Send GET request to the ConnectWise API
         response = requests.get(url, headers=HEADERS)
 
-        # Log response status before raising error
-        logging.info(f"Response Status Code: {response.status_code}")
         if response.status_code != 200:
             # Log response body for non-200 responses for more detailed errors
             try:
@@ -119,7 +115,7 @@ def fetchNewTickets():
             ticket_data = {
                 "Ticket ID": ticket_id,
                 "Summary": summary,
-                "Description": full_description  # Full description here
+                "Description": full_description
             }
 
             # Add the ticket data to the list
@@ -139,41 +135,9 @@ def fetchNewTickets():
 
 def getTriageOutput(ticket):
     try:
-        # Log the ticket structure to debug the issue
-        logging.info(f"Ticket data structure: {ticket}")
-
-        # Proceed with existing logic, assuming the ticket structure is correct
-        system_prompt = (
-            "You are a triage analyst reviewing tickets submitted from ConnectWise Manage. "
-            "When a ticket is pasted, extract and return a structured analysis in the format below. "
-            "The tone must be formal, objective, and neutral. "
-            "The analysis should not include casual language, conversational phrasing (e.g., 'Thanks', 'Here's', 'I've reviewed'), or emojis. "
-            "The response should be suitable for internal technical documentation, "
-            "focusing on the issue at hand and addressing any non-urgent aspects appropriately. "
-            "Urgency should be assessed in a rational manner based on the nature of the request, "
-            "with criticality being evaluated relative to the operational environment. "
-            "For example, issues like email signature creation should not be categorized as urgent compared to system failures or security issues. "
-            "Triage Analysis should be thorough but concise, "
-            "offering explanations for verdicts without any informal phrasing or personal commentary. "
-            "Explanatory phrasing should focus on factual reasoning and professional justification of decisions. "
-            "Avoid introductory statements like 'this appears to be' or 'here’s what I found'. "
-            "Ensure that standard elements (e.g., stock images, legal disclaimers) are recognized as routine and non-urgent, "
-            "unless specific deviations or complications are stated. "
-            "Avoid assuming urgency based solely on customer input, particularly in non-critical cases. "
-            "Next Steps or Initial Troubleshooting Recommendations should be provided where applicable. "
-            "These steps should be actionable, practical, and based on a logical order of resolution. "
-            "They should focus on resolving the issue or providing guidance on how to proceed with further investigation. "
-            "Include any relevant resources, tools, or documentation links that may assist in the resolution. "
-            "Recommendations should be clear, precise, and professional. "
-            "Strictly no emojis to be used at all."
-        )
-
         # Check if the ticket contains the expected fields before accessing them
         ticket_id = ticket.get('id', 'Unknown ID')
         summary = ticket.get('summary', 'No summary available')
-
-        # Log ticket id and summary for debugging
-        logging.info(f"Ticket ID: {ticket_id}, Summary: {summary}")
 
         # Use the full description which now includes both description and notes
         full_description = ticket.get('Description', 'No description available')
@@ -192,7 +156,7 @@ Triage Analysis:
 """
 
         response = client.chat.completions.create(model=GPT_MODEL,
-        messages=[{"role": "system", "content": system_prompt},
+        messages=[{"role": "system", "content": SYSTEM_PROMPT},
                   {"role": "user", "content": user_prompt}])
 
         return response.choices[0].message.content.strip()
